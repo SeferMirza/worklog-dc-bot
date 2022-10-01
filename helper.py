@@ -21,6 +21,4 @@ def getWorklog():
     for file in glob.glob(getWorklogPath() + "\\*.json"):
         txtfiles.append(file)
     return txtfiles
-    #with open(getWorklogPath() + "/", "r", encoding="utf-8") as jsonFile:
-    #    file = json.load(jsonFile)
-    #    return file["dc-token"]
+    
