@@ -32,17 +32,16 @@ for i in getWorklog():
                     obj = js["kayıtlar"][dayWork][task]
                     tdelta = datetime.strptime(obj["bitiş saati"], FMT) - datetime.strptime(obj["başlangıç saati"], FMT)
                     musteriCalisma += tdelta
-                    print(musteriCalisma)
         dic1[js["müşteri"]] += musteriCalisma
 total = 0
 logByMusteri = {}
 result = '```json\n{\n  "oranlar": {\n'
 for clWorkHour in dic1:
-    logByMusteri[clWorkHour] = ((dic1[clWorkHour].days * 24) + (dic1[clWorkHour].seconds/3600)) * 1.33
+    logByMusteri[clWorkHour] = ((dic1[clWorkHour].days * 24) + (dic1[clWorkHour].seconds/3600)) * 8/6
     total += (dic1[clWorkHour].days * 24) + (dic1[clWorkHour].seconds/3600)
-    result += '     "' + str(clWorkHour) + '":' + str(((dic1[clWorkHour].days * 24) + (dic1[clWorkHour].seconds/3600))*1.33) + ',\n '
+    result += '     "' + str(clWorkHour) + '":' + str(((dic1[clWorkHour].days * 24) + (dic1[clWorkHour].seconds/3600))*8/6) + ',\n '
 
-result += '},\n "total": '+str(total*1.33)+'\n'
+result += '},\n "total": '+str(total*8/6)+'\n'
 result += '}\n```'
 print(result)
 
