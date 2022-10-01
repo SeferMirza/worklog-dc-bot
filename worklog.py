@@ -27,7 +27,7 @@ for i in getWorklog():
 
         #get all work hours
         for dayWork in js["kayıtlar"]:
-            if int(dayWork.split(".")[2]) == year and int(dayWork.split(".")[1]) == (month - 1):
+            if int(dayWork.split(".")[2]) == year and int(dayWork.split(".")[1]) == (month):
                 for task in js["kayıtlar"][dayWork]:
                     obj = js["kayıtlar"][dayWork][task]
                     tdelta = datetime.strptime(obj["bitiş saati"], FMT) - datetime.strptime(obj["başlangıç saati"], FMT)
@@ -51,11 +51,10 @@ bot = commands.Bot(command_prefix="!", description="The description")
 async def  on_ready():
     channel = bot.get_channel(962008063341117520)
     await channel.send(result)
+    exit()
 
 @bot.command()
 async def ping(ctx):
     await ctx.send("ping")
-    
 
 bot.run(getToken())
-exit()
