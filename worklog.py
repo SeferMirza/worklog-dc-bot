@@ -39,9 +39,11 @@ result = '```json\n{\n  "oranlar": {\n'
 for clWorkHour in dic1:
     logByMusteri[clWorkHour] = ((dic1[clWorkHour].days * 24) + (dic1[clWorkHour].seconds/3600)) * 8/6
     total += (dic1[clWorkHour].days * 24) + (dic1[clWorkHour].seconds/3600)
-    result += '     "' + str(clWorkHour) + '":' + str(((dic1[clWorkHour].days * 24) + (dic1[clWorkHour].seconds/3600))*8/6) + ',\n '
+total = total*8/6
+for musteri in logByMusteri:
+    result += '     "' + str(musteri) + '":' + str((((dic1[musteri].days * 24) + (dic1[musteri].seconds/3600))*8/6)*100/total)[:5] + ' % ,\n'
 
-result += '},\n "total": '+str(total*8/6)+'\n'
+result += '  },\n  "total": '+str(total)[:6]+'\n'
 result += '}\n```'
 print(result)
 
