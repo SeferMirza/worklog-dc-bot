@@ -48,7 +48,7 @@ result += '}\n```'
 print(result)
 
 bot = commands.Bot(command_prefix="!", description="The description")
-#
+
 @bot.event
 async def  on_ready():
     channel = bot.get_channel(962008063341117520)
